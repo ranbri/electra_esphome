@@ -31,7 +31,13 @@ class ElectraWifiClimate : public climate::Climate, public PollingComponent {
   void send_state_command_(bool notify);
   void reconcile_power_pin_();
   climate::ClimatePreset preset_from_ifeel_() const;
-  void set_ifeel_from_preset_(const std::string &preset);
+  void ElectraWifiClimate::set_ifeel_from_preset_(climate::ClimatePreset preset) {
+    if (preset == climate::CLIMATE_PRESET_ECO) {
+      this->ac_.ifeel = IFEEL_ON;
+    } else {
+      this->ac_.ifeel = IFEEL_OFF;
+    }
+  }
   climate::ClimateSwingMode swing_mode_from_flags_() const;
   void set_swing_flags_(climate::ClimateSwingMode mode);
   void set_fan_mode_(climate::ClimateFanMode mode);
