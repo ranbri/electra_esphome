@@ -19,7 +19,9 @@ CONF_DEFAULT_IFEEL_TEMPERATURE = "default_ifeel_temperature"
 ns = cg.esphome_ns.namespace("electrawifi")
 ElectraWifiClimate = ns.class_("ElectraWifiClimate", climate.Climate, cg.PollingComponent)
 
-CONFIG_SCHEMA = climate.CLIMATE_SCHEMA.extend(
+BASE_CLIMATE_SCHEMA = getattr(climate, "CLIMATE_SCHEMA", climate._CLIMATE_SCHEMA)
+
+CONFIG_SCHEMA = BASE_CLIMATE_SCHEMA.extend(
     {
         cv.GenerateID(): cv.declare_id(ElectraWifiClimate),
         cv.Required(CONF_IR_PIN): pins.internal_gpio_output_pin_schema,
