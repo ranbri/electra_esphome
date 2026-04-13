@@ -206,7 +206,7 @@ climate::ClimatePreset ElectraWifiClimate::preset_from_ifeel_() const {
   return this->ac_.ifeel == IFEEL_ON
   ? climate::CLIMATE_PRESET_ECO
   : climate::CLIMATE_PRESET_NONE;
-
+}
 void ElectraWifiClimate::set_ifeel_from_preset_(climate::ClimatePreset preset) {
   if (preset == climate::CLIMATE_PRESET_ECO) {
     this->ac_.ifeel = IFEEL_ON;
