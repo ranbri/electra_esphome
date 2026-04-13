@@ -31,7 +31,7 @@ class ElectraWifiClimate : public climate::Climate, public PollingComponent {
   void send_state_command_(bool notify);
   void reconcile_power_pin_();
   climate::ClimatePreset preset_from_ifeel_() const;
-  void ElectraWifiClimate::set_ifeel_from_preset_(climate::ClimatePreset preset) {
+  void set_ifeel_from_preset_(climate::ClimatePreset preset);
     if (preset == climate::CLIMATE_PRESET_ECO) {
       this->ac_.ifeel = IFEEL_ON;
     } else {

@@ -203,15 +203,13 @@ void ElectraWifiClimate::sync_from_runtime_state_() {
 }
 
 climate::ClimatePreset ElectraWifiClimate::preset_from_ifeel_() const {
-  return this->ac_.ifeel == IFEEL_ON ? climate::ClimatePreset(PRESET_IFEEL)
-                                     : climate::ClimatePreset(PRESET_NONE);
-}
+  return this->ac_.ifeel == IFEEL_ON
+  ? climate::CLIMATE_PRESET_ECO
+  : climate::CLIMATE_PRESET_NONE;
 
-void ElectraWifiClimate::set_ifeel_from_preset_(const std::string &preset) {
-  if (preset == PRESET_IFEEL) {
+void ElectraWifiClimate::set_ifeel_from_preset_(climate::ClimatePreset preset) {
+  if (preset == climate::CLIMATE_PRESET_ECO) {
     this->ac_.ifeel = IFEEL_ON;
-    if (this->ac_.ifeel_temperature < 5 || this->ac_.ifeel_temperature > 36)
-      this->ac_.ifeel_temperature = this->default_ifeel_temperature_;
   } else {
     this->ac_.ifeel = IFEEL_OFF;
   }
