@@ -96,11 +96,10 @@ climate::ClimateTraits ElectraWifiClimate::traits() {
       climate::CLIMATE_SWING_HORIZONTAL,
       climate::CLIMATE_SWING_BOTH,
   });
-  traits.set_supported_presets(
-    climate::ClimatePresetMask()
-        .set(climate::CLIMATE_PRESET_NONE)
-        .set(climate::CLIMATE_PRESET_ECO)
-);
+  traits.set_supported_presets({
+    climate::CLIMATE_PRESET_NONE,
+    climate::CLIMATE_PRESET_ECO
+});
   traits.set_visual_min_temperature(15);
   traits.set_visual_max_temperature(30);
   traits.set_visual_temperature_step(1.0f);
