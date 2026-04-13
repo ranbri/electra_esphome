@@ -3,11 +3,6 @@ import esphome.config_validation as cv
 from esphome.components import climate
 from esphome.const import (
     CONF_ID,
-    CONF_NAME,
-    CONF_PIN,
-    CONF_OUTPUT,
-    CONF_INPUT,
-    CONF_RECEIVER_ID,
 )
 from esphome import pins
 
